@@ -1,0 +1,52 @@
+
+body {   
+    font-family: helvetica, sans-serif;
+    font-size:130%;
+}
+
+.btn  {
+    margin-top: 10px;
+}
+.form-group{
+    margin-top: 20px;
+}
+#OutputTextarea1 {
+    margin-top: 10px;
+}
+#frm2{
+    margin-top: 20px;
+}
+#headExe {
+    color: red;
+    font-size: 130% !important;
+    text-align: center; 
+    margin-bottom: 10px;
+}
+#textExe {
+    color:green;
+    font-size: 80%;
+    text-align: center; 
+    margin-bottom: 10px;
+}
+
+.form-element {
+    color: red;
+    font-size: 130%;
+    margin-bottom: 10px; 
+     
+}
+input {
+    padding: 5px 5px 12px 5px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    width:320px;
+}
+#submitButton {                
+    width: 130px;
+    margin-left: 200px;
+}
+#submitButton2 {                
+    width: 130px;
+    margin-left: 200px;
+}

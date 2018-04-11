@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- working on all devices -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <title>Pricing Tools</title>
+ 
+        <!--
+            CSS and JS/JQ embedded Plus Bootstrap UI            
+            Engine: compare JS with python
+            by MaoSoft() 2018 04 09
+            very easy version
+            // version with: 
+                //separate JS and CSS to reutilize snippets
+                // no php server just JS and HTML+CSS
+                by MaoSoft() R1 . 201804.10 clarified use of form fields
+                             R2 . 201801.   
+                             R3 . 
+
+
+            //changeLog - toDo
+            //01 testing general ideas; easy data input;  comparing with pythons easy UI; One tools
+            //02 comparing with pythons easy UI; One tools (mark up)
+            //02 Using Modal Interface for output and calling more Tools
+            // Enhancing UI with logo and footer
+            
+        -->
+        
+        
+        <!-- // loading CSS Section of bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- this css section is on file ! -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <!-- navbar standard (we don't use it up to now-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">MaoSoft()</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+        </nav>
+        <div id="headExe">
+            Pricing Tools  R 1.0<br>
+            by MaoSoft()<br>        
+        </div>
+
+        <div id= "textExe">
+            Una breve collezione di Tools per la gestione manuale dei prezzi di acquisto, vendita e listino con CAT
+        </div>
+        
+        <!-- Input Form-->
+        <form id=frm1>
+            
+            <div class="row">
+              <div class="col">
+                <label for = "PA" >Prezzo Acquisto  </label> 
+                <input type="text"  class="form-control" id="PA" placeholder="PA" value="0">
+              </div>
+              <div class="col">
+                <label for = "PV" >Prezzo Vendita  </label> 
+                <input type="text" class="form-control" id="PV" placeholder="PV" value="0">
+              </div>
+              <div class="col">
+                    <label for = "PL" >Prezzo Listino  </label> 
+                <input type="text" class="form-control" id="PL" placeholder="PL" value="0">
+              </div>
+              
+            </div>
+        </form>
+
+        <form id=frm2>
+            
+                <div class="row">
+                  <div class="col">
+                    <label for = "MU" >Mark Up  </label> 
+                    <input type="text"  class="form-control" id="MU" placeholder="MU" value="0">
+                  </div>
+                  <div class="col">
+                    <label for = "SCA" >ScontoAcquisto  </label> 
+                    <input type="text" class="form-control" id="SCA" placeholder="SCA" value="0">
+                  </div>
+                  <div class="col">
+                        <label for = "SCV" >ScontoVendita  </label> 
+                    <input type="text" class="form-control" id="SCV" placeholder="SCV" value="0">
+                  </div>
+                  
+                </div>
+            </form>
+
+
+        <!-- Button trigger modal and function start -->
+        <button type="button" id="btnMarkUp" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-name="MarkUp"
+        onclick="MarkUp()">
+            MarkUp
+        </button>
+                
+        <button type="button" id="btnListino" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-name="Listino"
+        onclick="Listino()">
+            Listino
+        </button>
+            
+        <button type="button" id="btnSconto" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-name="Sconto"
+            onclick="ScontoAcquisto()" > 
+            Sconto
+        </button>
+    
+
+
+
+        <!-- Results on screen -->
+        
+        <div class="form-group">
+            <label for="OutputTextarea1">Output textarea</label>
+            <textarea class="form-control" id="OutputTextarea1" rows="3"></textarea>
+        </div>
+
+
+
+        <!-- this script section is loading external libraries  !  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+
+
+        <!-- this script section is on file ! 
+            script file is the same for all functions. 
+            Functions inside script are quite different
+           
+        <script type="text/javascript" src="script1.js"></script> 
+        -->
+        
+        <!-- this script section is reading DOM values! Later we move it on file  -->
+        <script type="text/javascript">
+            //READING FORM VALUES
+            /*JQ
+            $("#btnMarkUp").click(function(){
+                //alert("ciao");
+                var PA = $("#PA").html;
+                var PL = $("#PL").value;
+                console.log(PA);
+                console.log(PL);
+            });          
+            */
+           //JS
+           /*
+           function MarkUp(){
+                //just for testing purpose and difference btw JS and JQ
+                
+                console.log("in mark up function")
+                var l= document.forms.length // yeah!
+                var PA = document.getElementById("PA").value; //call with id attribute
+                //var x= document.forms.namedItem("myCarForm").innerHTML;
+                //var x =  docuxment.getElementById("frm1");
+                //var y =  <x class="elements value" 0=""></x>
+                console. log(l);
+                console.log (PA);
+                //id="OutputTextarea1"
+                document.getElementById("OutputTextarea1").innerHTML = PA;
+                var PA1 = $("#PA").text();
+                var PA2 = $("#PA").html();
+                var PA3 = $("#PA").val();
+                console.log(PA1);
+                console.log(PA2);
+                console.log(PA3);
+                
+           }
+           */
+        </script>
+        <!-- this script section is on file ! 
+        script file is the same for all exercise. 
+        Functions inside script are quite different
+        -->
+        <script type="text/javascript" src="script1.js"></script> 
+    </body>
+<html>
